@@ -1,0 +1,138 @@
+\documentclass[a4paper,12pt, danish, english]{article}
+
+\usepackage{geometry} 
+\geometry{
+    left=1.5cm,
+    right=1.5cm,
+    top=2cm,
+    bottom=2cm
+}
+
+\usepackage{a4wide}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{enumitem}
+
+\usepackage{graphicx}  % For including images
+\usepackage{xcolor}  % For a colorfull presentation
+
+\usepackage{csquotes}
+\usepackage{setup/survival-pack}
+\usepackage{setup/boxes}
+\usepackage{setup/simplecommands}
+\usepackage{setup/colors}
+\usepackage{lipsum}
+
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{fancyvrb}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={MLA Exam},
+    pdfpagemode=FullScreen,
+}
+
+\usepackage{booktabs} % For better-looking tables
+\usepackage{multirow} % To merge rows
+\usepackage{caption} % For improved caption
+\usepackage{changepage}
+
+\usepackage{biblatex}
+\addbibresource{Litterature.bib}
+\newcommand{\cpage}[1]{p.~#1}
+\newcommand{\cpages}[2]{pp.~#1-#2}
+\newcommand{\csec}[1]{Section ~#1}
+
+\newcommand{\authorpoints}[2]{{\large \texttt{(#2 points)} \texttt{[#1]}}}
+\newenvironment{centeredverbatim}{\expandafter\verbatim\centering}{\endverbatim}
+
+\usepackage{
+    tabularx
+} % for equal-width tables that stretch to fill the given space
+\usepackage{array} % for new column types
+\usepackage[table]{xcolor} % for cell coloring
+\usepackage{amsmath}
+\newenvironment{psmallmatrix}{\left(\begin{smallmatrix}}{\end{smallmatrix}\right)}
+
+% Set page margins if needed, or remove this line to use default margins
+
+% Define a new column type that is centered and has a fixed width
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+%_ for algorithms
+\usepackage{multicol}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{tabularx}
+\newcommand*{\AlgoTopMargin}[0]{\vspace*{0.3em}}
+\newcommand*{\AlgoInput}[1]{\hspace*{\algorithmicindent} \textbf{Input:} #1}
+\newcommand*{\AlgoOutput}[1]{\hspace*{\algorithmicindent} \textbf{Output:} #1}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+\usepackage{caption}
+%change font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[babel, da]{ku-forside} % KU-forside.
+\usepackage{float}
+
+\usepackage{bm}
+\usepackage[dvipsnames, svgnames]{xcolor}
+
+\titel{Machine Learning A (2024)} %Skriv jeres projektnummer (1-8}
+\undertitel{Course code » NDAK22000U} %Skriv titlen på jeres projekt
+\opgave{Exam 2024}
+\forfatter{Exam number: \hspace{1em} ..}%Skriv jeres gruppenummer
+\dato{Department of Computer Science \today} %"today" skriver automatisk dagens dato.
+\vejleder{Course supervisor: Yevgeny Seldin} %Skriv jeres vejleders navn
+
+\renewcommand*{\thelstnumber}{\arabic{lstnumber}:}
+
+\DeclareCaptionFormat{mylst}{\hrule#1#2#3}
+\captionsetup[lstlisting]{format=mylst,labelfont=bf,singlelinecheck=off,labelsep=space}
+
+\newcommand{\exampleoutput}{ \par
+\noindent
+\tikz{\draw [dash pattern=on 4pt off 4pt] (0,0) -- (\textwidth+4.5mm,0);} \par\textbf{Example
+Output:}\par }
+
+
+% match codebox boxes.sty
+\lstset{ backgroundcolor=
+\color{codebox-colback}
+,}
+
+% -------------- document begin --------------
+\begin{document}
+    \setcounter{page}{1}
+
+    \maketitle
+
+    \thispagestyle{empty} % no fancy header on first page (just a fancy footer).
+    \renewcommand{\contentsname}{Table of contents}
+    \tableofcontents
+    \thispagestyle{empty}
+    \newpage
+    \setcounter{page}{1}
+
+    \newcommand{\theorem}[1]{\textbf{Theorem #1}}
+
+    
+
+    \printbibliography
+\end{document}
