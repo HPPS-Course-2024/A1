@@ -1,9 +1,30 @@
 #include "numbers.h"
+#include <stdlib.h>
+
+#define RED "\033[31m"
+#define YELLOW "\033[33m"
+#define RESET "\033[0m"
+
+#define ASSERT(cond, msg)                                                      \
+  do {                                                                         \
+    if (!(cond)) {                                                             \
+      fprintf(stderr, " - %s Error:%s %s\n", RED, RESET, msg);                 \
+      exit(EXIT_FAILURE);                                                      \
+    }                                                                          \
+  } while (0)
 
 struct bits8 bits8_from_int(unsigned int x) {
-  // An integer is 4 bytes =>
-  return (struct bits8){
-      .b0 = 0, .b1 = 1, .b2 = 0, .b3 = 0, .b4 = 0, .b5 = 0, .b6 = 0, .b7 = 0};
+  ASSERT(x <= 255, "Value is too large for 8 bits");
+  struct bits8 result;
+  result.b0 = bit_from_int(x & 1);
+  result.b1 = bit_from_int(x >> 1 & 1);
+  result.b2 = bit_from_int(x >> 2 & 1);
+  result.b3 = bit_from_int(x >> 3 & 1);
+  result.b4 = bit_from_int(x >> 4 & 1);
+  result.b5 = bit_from_int(x >> 5 & 1);
+  result.b6 = bit_from_int(x >> 6 & 1);
+  result.b7 = bit_from_int(x >> 7 & 1);
+  return result;
 }
 
 unsigned int bits8_to_int(struct bits8 x) {}
@@ -34,6 +55,6 @@ void print_bits(struct bits8 b) {
 }
 
 int main() {
-  struct bits8 two = bits8_from_int(2);
+  struct bits8 two = bits8_from_int(-1);
   print_bits(two);
 }
