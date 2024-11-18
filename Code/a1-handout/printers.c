@@ -9,7 +9,7 @@ void uint8_to_base2(void* value, char* buffer, size_t buffer_size) {
   assert(buffer_size >= 9);
   uint8_t v = *(uint8_t*)value;
   for (int i = 0; i < 8; i++) {
-    buffer[i] = (v >> (7 - i)) & 1 ? '1' : '0';
+    buffer[i] = (v >> (7 - i)) & 0b1 ? '1' : '0';
   }
   buffer[8] = '\0';
 }

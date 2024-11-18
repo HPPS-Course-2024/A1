@@ -31,13 +31,14 @@ struct bits8 bits8_init(bool b0, bool b1, bool b2, bool b3, bool b4, bool b5,
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 #define RESET "\033[0m"
+#define BOLD "\033[1m"
 
 #define CHECKMARK "\u2714"
 #define CROSSMARK "\u2718"
 
 #define INFO(msg)                                                              \
   do {                                                                         \
-    fprintf(stdout, " %sℹ️  Info:%s %s\n", GREEN, RESET, msg);             \
+    fprintf(stdout, " %sℹ️  Info:%s %s\n", GREEN, RESET, msg);                  \
   } while (0)
 
 #define ASSERT(cond, msg)                                                      \
