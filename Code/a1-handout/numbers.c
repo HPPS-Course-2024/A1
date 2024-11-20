@@ -18,9 +18,7 @@ struct bits8 bits8_init(bool b7, bool b6, bool b5, bool b4, bool b3, bool b2,
 }
 
 struct bits8 bits8_from_int(unsigned int x) {
-  printf("Not casted: %d\n", x);
-  printf("Casted: %d\n", ((int8_t)x));
-  ASSERT(x <= 255, "Value is too large for 8 bits");
+  ASSERT((uint8_t)x <= 255, "Value is too large for 8 bits");
 
   struct bits8 result; // x = 10, 0b1010
   result.b0.v = x & 1;
@@ -52,7 +50,7 @@ unsigned int bits8_to_int(struct bits8 x) {
 void bits8_print(struct bits8 v) {
   uint8_t result = bits8_to_int(v);
   for (int i = 0; i <= 7; i++) {
-    printf("%d", (result >> (7 - i)) & 1);
+    printf("%d", (result >> (7 - i)) & 0b1);
   }
   printf("\n");
 }
