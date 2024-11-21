@@ -102,43 +102,43 @@ int test_bits8_to_int(int* counter, TestResult* result) {
 
   uint8_t expected, got;
 
-  expected = 0b10100010; // Decimal 162
+  expected = 162; // Binary 0b1010 0010
   got      = bits8_to_int(bits8_init(1, 0, 1, 0, 0, 0, 1, 0));
   success |= assert_test((*counter)++, "Convert 0x10100010", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
                          &to_uint8_base10, result);
 
-  expected = 0b10101010; // Decimal 170
+  expected = 170; // Binary 0b1010 1010
   got      = bits8_to_int(bits8_init(1, 0, 1, 0, 1, 0, 1, 0));
   success |= assert_test((*counter)++, "Convert 0x10101010", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
                          &to_uint8_base10, result);
 
-  expected = 0b01010101; // Decimal 85
+  expected = 85; // Binary 0b0101 0101s
   got      = bits8_to_int(bits8_init(0, 1, 0, 1, 0, 1, 0, 1));
   success |= assert_test((*counter)++, "Convert 0x01010101", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
                          &to_uint8_base10, result);
 
-  expected = 0b00000001; // Decimal 1
+  expected = 1; // Binary 0b0000 0001
   got      = bits8_to_int(bits8_init(0, 0, 0, 0, 0, 0, 0, 1));
   success |= assert_test((*counter)++, "Convert 0x00000001", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
                          &to_uint8_base10, result);
 
-  expected = 0b10000000; // Decimal 128
+  expected = 128; // Binary 0b1000 0000
   got      = bits8_to_int(bits8_init(1, 0, 0, 0, 0, 0, 0, 0));
   success |= assert_test((*counter)++, "Convert 0x10000000", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
                          &to_uint8_base10, result);
 
-  expected = 255; // Binary 0b11111111
+  expected = 255; // Binary 0b1111 1111
   got      = bits8_to_int(bits8_init(1, 1, 1, 1, 1, 1, 1, 1));
   success |= assert_test((*counter)++, "Convert 0x11111111", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
                          &to_uint8_base10, result);
 
-  expected = 0; // Binary 0b00000000
+  expected = 0; // Binary 0b0000 0000
   got      = bits8_to_int(bits8_init(0, 0, 0, 0, 0, 0, 0, 0));
   success |= assert_test((*counter)++, "Convert 0x00000000", &expected, &got,
                          &uint8_uint8_comparator, &to_uint8_base10,
@@ -284,7 +284,7 @@ int test_bits8_mul(int* counter, TestResult* result) {
     int x, y;
   } cases[] = {{-5, 20}, {5, -20}, {-5, -20}, {5, -1}, {-5, -1}};
 
-  for (int i = 0; i < sizeof(cases) / sizeof(cases[0]); i++) {
+  for (int i = 0; i < (int)(sizeof(cases) / sizeof(cases[0])); i++) {
     expected          = cases[i].x * cases[i].y;
     struct bits8 val1 = bits8_from_int(cases[i].x);
     struct bits8 val2 = bits8_from_int(cases[i].y);
@@ -316,7 +316,7 @@ int main() {
   int        test_counter = 1;
   TestResult result       = {0, 0};
 
-  for (int i = 0; i < sizeof(test_cases) / sizeof(test_cases[0]); i++) {
+  for (int i = 0; i < (int)(sizeof(test_cases) / sizeof(test_cases[0])); i++) {
     print_header();
     printf("%s:\n", test_cases[i].name);
 

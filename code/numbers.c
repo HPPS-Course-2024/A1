@@ -22,13 +22,13 @@ struct bits8 bits8_from_int(unsigned int x) {
 
   struct bits8 result; // x = 10, 0b1010
   result.b0.v = x & 1;
-  result.b1.v = x >> 1 & 0b1;
-  result.b2.v = x >> 2 & 0b1;
-  result.b3.v = x >> 3 & 0b1;
-  result.b4.v = x >> 4 & 0b1;
-  result.b5.v = x >> 5 & 0b1;
-  result.b6.v = x >> 6 & 0b1;
-  result.b7.v = x >> 7 & 0b1;
+  result.b1.v = x >> 1 & 1;
+  result.b2.v = x >> 2 & 1;
+  result.b3.v = x >> 3 & 1;
+  result.b4.v = x >> 4 & 1;
+  result.b5.v = x >> 5 & 1;
+  result.b6.v = x >> 6 & 1;
+  result.b7.v = x >> 7 & 1;
   return result;
 }
 
@@ -50,7 +50,7 @@ unsigned int bits8_to_int(struct bits8 x) {
 void bits8_print(struct bits8 v) {
   uint8_t result = bits8_to_int(v);
   for (int i = 0; i <= 7; i++) {
-    printf("%d", (result >> (7 - i)) & 0b1);
+    printf("%d", (result >> (7 - i)) & 1);
   }
   printf("\n");
 }
@@ -127,7 +127,7 @@ struct bits8 bits8_mul(struct bits8 x, struct bits8 y) {
   uint8_t y_bits_as_int = bits8_to_int(y);
 
   for (int i = 0; i < 8; i++) {
-    if (y_bits_as_int >> i & 0b1) {
+    if (y_bits_as_int >> i & 1) {
       x = bits8_from_int(x_bits_as_int << i);
       z += bits8_to_int(x);
     }
